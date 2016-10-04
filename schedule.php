@@ -49,7 +49,7 @@ schedule();
             } else {
               $res = null;
             }
-            if (!empty($res['content')) {
+            if (!empty($res['content'])) {
                 $schedule = $res['content'];
             } else {
                 $schedule = "";
