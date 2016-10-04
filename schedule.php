@@ -43,7 +43,9 @@ schedule();
             $disp_ymd = "{$y}年{$m}月{$d}日のスケジュール";
 
             // スケジュールデータを取得する
-            $query = $db->query("select * from schedule where date = '{$y}-{$m}-{$d}'");
+            $date = "{$y}-{$m}-{$d}"
+            $date = date('Y-m-d',  strtotime($date));
+            $query = $db->query("select * from schedule where date = {$date}");
             if(!empty($query)){
               $res = $query->fetch(PDO::FETCH_ASSOC);
             } else {

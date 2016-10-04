@@ -76,12 +76,20 @@
         echo "<input type='submit' value='表示' name='sub1'>";
         echo "</form>";
     }
-     
+
     function contents( $ymd ) {
         $s = "";
-        $file_name = "data/$ymd.txt";
-        if (file_exists($file_name)) {
-            $s = file_get_contents($file_name);
+        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8','php',getenv('DB_PASS'));
+        $query = $db->query("select * from schedule where date = {$date}");
+
+        if(!empty($query)){
+          $res = $query->fetch(PDO::FETCH_ASSOC);
+        } else {
+          $res = null;
+        }
+
+        if (!empty($res)) {
+            $s = $res['content'];
             $s = str_replace("\r", "", $s);
             $s = str_replace("\n", "<br>", $s);
         }
@@ -106,7 +114,7 @@
                 . "<br/><br/><font size='2'>"
                 . contents($ymd)
                 . "</font></td>";
-            
+
             // 今日が土曜日の場合の処理
             if (date("w", mktime(0, 0, 0, $m, $d, $y)) == 6) {
                 // 週を終了
@@ -117,11 +125,11 @@
                     echo "<tr>";
                 }
             }
-            
+
             // 日付を1つ進める
             $d++;
         }
-        
+
         // 最後の週の土曜日まで移動
         $wd = date("w", mktime(0, 0, 0, $m + 1, 0, $y));
         for ($i = 1; $i < 7 - $wd; $i++) {
