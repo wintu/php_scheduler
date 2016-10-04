@@ -63,7 +63,12 @@ schedule();
             if (!empty($stext)) {
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
-                $db->query("update schedule set content='{$stext}' where id = {$res['id']}");
+                if (empty($res)){
+                  $db->query("insert into schedule(date, content) values({$ymd}, '{$stext}')")
+                } else {
+                  $db->query("update schedule set content='{$stext}' where id = {$res['id']}");
+                }
+
             } else {
                 // スケジュールが空の場合はファイルを削除
                 if (!empty($res['content'])) {
