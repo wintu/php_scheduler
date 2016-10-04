@@ -63,11 +63,11 @@ schedule();
             if (!empty($stext)) {
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
-                $db->query("update schedule set content='{$stext}' where id = {$res['id']}")
+                $db->query("update schedule set content='{$stext}' where id = {$res['id']}");
             } else {
                 // スケジュールが空の場合はファイルを削除
                 if (!empty($res['content'])) {
-                    $db->query("delete from schedule where id = {$res['id']}")
+                    $db->query("delete from schedule where id = {$res['id']}");
                 }
             }
             // カレンダー画面の元の年月に移動する
