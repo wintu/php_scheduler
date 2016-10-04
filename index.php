@@ -77,10 +77,11 @@
         echo "</form>";
     }
 
-    function contents( $ymd ) {
+    function contents( $y, $m, $d ) {
         $s = "";
         $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8','php',getenv('DB_PASS'));
-        $date = date('Y-m-d',  strtotime($ymd));
+        $date = "{$y}-{$m}-{$d}"
+        $date = date('Y-m-d',  strtotime($date));
         $query = $db->query("select * from schedule where date = {$date}");
 
         if(!empty($query)){
@@ -113,7 +114,7 @@
                 . sprintf($link, $y, $m, $d)
                 . "\">{$d}</a>"
                 . "<br/><br/><font size='2'>"
-                . contents($ymd)
+                . contents($y, $m, $d)
                 . "</font></td>";
 
             // 今日が土曜日の場合の処理
