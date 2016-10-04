@@ -31,6 +31,7 @@ schedule();
 <?php
     function schedule() {
         global $disp_ymd, $schedule;
+        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8','php',getenv('DB_PASS'));
 
         // 年月日を取得する
         if (isset($_GET["ymd"])) {
@@ -42,9 +43,10 @@ schedule();
             $disp_ymd = "{$y}年{$m}月{$d}日のスケジュール";
 
             // スケジュールデータを取得する
-            $file_name = "data/{$ymd}.txt";
-            if (file_exists($file_name)) {
-                $schedule = file_get_contents($file_name);
+            $query = $db->query("select * from schedule where date = '{$y}-{$m}-{$d}'")
+            $res = $query->fetch(PDO::FETCH_ASSOC);
+            if (!empty($res['content'])) {
+                $schedule = $res['content'];
             } else {
                 $schedule = "";
             }
@@ -57,11 +59,11 @@ schedule();
             if (!empty($stext)) {
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
-                file_put_contents($file_name, $stext);
+                $db->query("update schedule set content='{$stext}' where id = {$res['id']}")
             } else {
                 // スケジュールが空の場合はファイルを削除
-                if (file_exists($file_name)) {
-                    unlink($file_name);
+                if (!empty($res['content'])) {
+                    $db->query("delete from schedule where id = {$res['id']}")
                 }
             }
             // カレンダー画面の元の年月に移動する
