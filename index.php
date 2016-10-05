@@ -34,6 +34,7 @@
 </html>
 <?php
     function main() {
+      include('config.php');
         global $y, $m;
         if (isset($_POST["y"])) {
             // 選択された年月を取得する
@@ -78,7 +79,6 @@
     }
 
     function contents( $ymd ) {
-      include('config.php');
         $s = "";
         $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
         $query = $db->query("select * from schedule where date = {$ymd}");
