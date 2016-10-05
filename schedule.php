@@ -29,8 +29,8 @@ schedule();
 </body>
 </html>
 <?php
-include('config.php');
     function schedule() {
+      include('config.php');
         global $disp_ymd, $schedule;
         $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
 
