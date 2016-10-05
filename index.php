@@ -80,7 +80,7 @@ include('config.php');
 
     function contents( $ymd ) {
         $s = "";
-        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', $db_user, $db_pass);
+        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
         $query = $db->query("select * from schedule where date = {$ymd}");
 
         if(!empty($query)){

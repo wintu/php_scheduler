@@ -32,7 +32,7 @@ schedule();
 include('config.php');
     function schedule() {
         global $disp_ymd, $schedule;
-        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', $db_user, $db_pass);
+        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
 
         // 年月日を取得する
         if (isset($_GET["ymd"])) {
