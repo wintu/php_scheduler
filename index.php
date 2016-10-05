@@ -33,6 +33,7 @@
 </body>
 </html>
 <?php
+include('config.php');
     function main() {
         global $y, $m;
         if (isset($_POST["y"])) {
@@ -79,7 +80,7 @@
 
     function contents( $ymd ) {
         $s = "";
-        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8','php',getenv('DB_PASS'));
+        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', $db_user, $db_pass);
         $query = $db->query("select * from schedule where date = {$ymd}");
 
         if(!empty($query)){
