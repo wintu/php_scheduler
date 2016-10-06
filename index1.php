@@ -17,7 +17,7 @@ $(document).ready(function () {
       function (){
         return myDateFunction(this.id, false);
       }
-    }
+    },
     ajax: {
       url: "data.php",
     }
