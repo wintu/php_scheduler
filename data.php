@@ -1,12 +1,11 @@
 <?php
 require_once('config.php');
 $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
-$query = $db->prepare('select * from cr_data');
+$query = $db->query('select * from cr_data');
 
 $data = array();
 
-$res = $query->fetch(PDO::FETCH_ASSOC);
-foreach($res as $row){
+while($row = $query->fetch(PDO::FETCH_ASSOC)){
   $data[] = array(
     'date'=>$row['date'],
     'badge'=>$row['badge'],
@@ -17,5 +16,5 @@ foreach($res as $row){
   );
 }
 header('Content-type: application/json');
-echo json_encode($userData);
+echo json_encode($data);
 ?>
