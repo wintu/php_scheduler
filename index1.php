@@ -10,18 +10,16 @@
      <script type="application/javascript">
 $(document).ready(function () {
   $("#my-calendar").zabuto_calendar({
-    action: function () {
-                return myDateFunction(this.id, false);
-            },
-            action_nav: function () {
-                return myNavFunction(this.id);
-            },
     cell_border: true,
     today: true,
     weekstartson: 0,
+    action: {
+      function (){
+        return myDateFunction(this.id, false);
+      }
+    }
     ajax: {
       url: "data.php",
-      modal: true
     }
   });
 });
@@ -38,12 +36,6 @@ function myDateFunction(id, fromModal) {
         $("#date-popover-content").html('You clicked on date ' + date);
         $("#date-popover").show();
         return true;
-    }
-
-    function myNavFunction(id) {
-        $("#date-popover").hide();
-        var nav = $("#" + id).data("navigation");
-        var to = $("#" + id).data("to");
     }
 </script>
 </head>
