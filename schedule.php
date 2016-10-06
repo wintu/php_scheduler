@@ -14,6 +14,9 @@ schedule();
       <td><?php echo $disp_ymd; ?></td>
     </tr>
     <tr>
+      <td><input type="text" name="title" size="40"></input></td>
+    </tr>
+    <tr>
       <td>
       <textarea rows="10" cols="50" name="schedule"><?php echo $schedule; ?></textarea>
       </td>
@@ -31,7 +34,7 @@ schedule();
 <?php
     function schedule() {
       include('config.php');
-        global $disp_ymd, $schedule;
+        global $disp_ymd, $schedule, $title;
         $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
 
         // 年月日を取得する
@@ -59,21 +62,22 @@ schedule();
 
         if (isset($_POST["action"]) and $_POST["action"] == "更新する") {
             $stext = htmlspecialchars($_POST["schedule"], ENT_QUOTES, "UTF-8");
+            $title= htmlspecialchars($_POST["title"], ENT_QUOTES, "UTF-8")
 
             // スケジュールが入力されたか調べて処理を分岐
             if (!empty($stext)) {
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
                 if (empty($res)){
-                  $db->query("insert into schedule(date, content) values({$ymd}, '{$stext}')");
+                  $db->query("insert into cr_data(date, body, title) values({$ymd}, '{$stext}', '{$title}')");
                 } else {
-                  $db->query("update schedule set content='{$stext}' where id = {$res['id']}");
+                  $db->query("update cr_data set body='{$stext}', title='{$title}' where id = {$res['id']}");
                 }
 
             } else {
                 // スケジュールが空の場合はファイルを削除
                 if (!empty($res['content'])) {
-                    $db->query("delete from schedule where id = {$res['id']}");
+                    $db->query("delete from cr_data where id = {$res['id']}");
                 }
             }
             // カレンダー画面の元の年月に移動する
