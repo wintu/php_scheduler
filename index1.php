@@ -17,7 +17,7 @@
 
                          $("#my-calendar").zabuto_calendar({
                              action: function () {
-                                 return myDateFunction(this.id, false);
+                                 return myDateFunction(this.id, true);
                              },
                              action_nav: function () {
                                  return myNavFunction(this.id);
