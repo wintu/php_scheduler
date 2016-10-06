@@ -20,6 +20,7 @@ $(document).ready(function () {
     },
     ajax: {
       url: "data.php",
+      modal: true
     }
   });
 });
