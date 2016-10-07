@@ -86,7 +86,7 @@ schedule();
 
             } else {
                 // スケジュールが空の場合はファイルを削除
-                if (!empty($res['body'])) {
+                if (!empty($res['body']) && !empty($res['title'])) {
                     $db->query("delete from cr_data where id = {$res['id']}");
                 }
             }
