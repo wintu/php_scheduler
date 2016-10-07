@@ -55,7 +55,7 @@ schedule();
             }
             if (!empty($res['body'])) {
                 $schedule = $res['body'];
-                $title = $res['title']
+                $title = $res['title'];
             } else {
                 $schedule = "";
             }
