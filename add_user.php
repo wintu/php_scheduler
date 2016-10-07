@@ -1,4 +1,5 @@
 <?php
+require_once('config.php');
   if (isset($_POST["login"])) {
     $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
     $pass = password_hash($_POST["password"], PASSWORD_DEFAULT);
