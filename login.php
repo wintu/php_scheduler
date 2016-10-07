@@ -12,15 +12,11 @@ include('config.php');
     }
   }
 
-  // エラーメッセージ
   $errorMessage = "";
-  // 画面に表示するため特殊文字をエスケープする
   $viewUserId = htmlspecialchars($_POST["userid"], ENT_QUOTES);
 
-  // ログインボタンが押された場合
   if (isset($_POST["login"])) {
     $user_data = FindUser($_POST["userid"]);
-    // 認証成功
     if ($_POST["userid"] == $user_data['name'] && password_verify($_POST["password"], $user_data['pass'])) {
       session_regenerate_id(TRUE);
       $_SESSION["USERID"] = $_POST["userid"];

@@ -19,12 +19,11 @@ schedule();
       <td><?php echo $disp_ymd; ?></td>
     </tr>
     <tr>
-      <td><p>タイトル</p></td>
-      <td><input type="text" name="title" size="40"></input></td>
+      <td><p>タイトル</p><br><input type="text" name="title" size="40"></input></td>
     </tr>
     <tr>
-      <td><p>メモ</p></td>
       <td>
+        <p>メモ</p><br>
       <textarea rows="10" cols="50" name="schedule"><?php echo $schedule; ?></textarea>
       </td>
     </tr>
@@ -43,6 +42,9 @@ schedule();
       include('config.php');
         global $disp_ymd, $schedule, $title;
         $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
+        $query = $db->query("select * from users where name = '{$_SESSION["USERID"]}'");
+        $db_data = $query->fetch(PDO::FETCH_ASSOC);
+        $user_id = $db_data['id'];
 
         // 年月日を取得する
         if (isset($_GET["ymd"])) {
@@ -54,7 +56,7 @@ schedule();
             $disp_ymd = "{$y}年{$m}月{$d}日のスケジュール";
 
             // スケジュールデータを取得する
-            $query = $db->query("select * from cr_data where date = {$ymd}");
+            $query = $db->query("select * from cr_data where date = {$ymd} and user_id = {$user_id}");
             if(!empty($query)){
               $res = $query->fetch(PDO::FETCH_ASSOC);
             } else {
@@ -77,7 +79,7 @@ schedule();
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
                 if (empty($res)){
-                  $db->query("insert into cr_data(date, body, title) values({$ymd}, '{$stext}', '{$title}')");
+                  $db->query("insert into cr_data(date, body, title, user_id) values({$ymd}, '{$stext}', '{$title}', {$user_id})");
                 } else {
                   $db->query("update cr_data set body='{$stext}', title='{$title}' where id = {$res['id']}");
                 }
@@ -89,7 +91,7 @@ schedule();
                 }
             }
             // カレンダー画面の元の年月に移動する
-            header("Location: index.php?y=${y}&m=${m}");
+            header("Location: index.php");
         }
     }
 ?>
