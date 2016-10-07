@@ -34,7 +34,7 @@ $(document).ready(function () {
 <h4>スケジュール帳</h4>
 <div class="row">
   <form action="schedule.php" method="get">
-    <input type="submit" value="新しいスケジュールを登録する">
+    <input class="btn btn-primary" type="submit" value="新しいスケジュールを登録する">
     <input type="text" id="departure" name="ymd" value="<?php echo date("Y-m-d") ?>" >
   </form>
 </div>
