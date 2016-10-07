@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION["USERID"])) {
+  header("Location: logout.php");
+  exit;
+}
 schedule();
 ?>
 <html>
@@ -14,9 +19,11 @@ schedule();
       <td><?php echo $disp_ymd; ?></td>
     </tr>
     <tr>
+      <td><p>タイトル</p></td>
       <td><input type="text" name="title" size="40"></input></td>
     </tr>
     <tr>
+      <td><p>メモ</p></td>
       <td>
       <textarea rows="10" cols="50" name="schedule"><?php echo $schedule; ?></textarea>
       </td>

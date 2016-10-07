@@ -1,7 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION["USERID"])) {
+  header("Location: logout.php");
+  exit;
+}
+
 require_once('config.php');
 $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
-$query = $db->query('select * from cr_data');
+$query = $db->query("select * from cr_data where user_id = '{$_SESSION["USERID"]}'");
 
 $data = array();
 
