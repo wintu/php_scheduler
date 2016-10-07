@@ -79,7 +79,7 @@ schedule();
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
                 if (empty($res)){
-                  $db->query("insert into cr_data(date, body, title, user_id) values({$ymd}, '{$stext}', '{$title}', {$user_id})");
+                  $db->query("insert into cr_data(date, body, title, user_id, footer) values({$ymd}, '{$stext}', '{$title}', {$user_id}, 'schedule.php?ymd={$_GET["ymd"]}')");
                 } else {
                   $db->query("update cr_data set body='{$stext}', title='{$title}' where id = {$res['id']}");
                 }
