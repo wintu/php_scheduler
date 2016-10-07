@@ -19,11 +19,11 @@ schedule();
       <td><?php echo $disp_ymd; ?></td>
     </tr>
     <tr>
-      <td><p>タイトル</p><br><input type="text" name="title" size="40"><?php echo $title ?></input></td>
+      <td>タイトル<br><input type="text" name="title" size="40" value="<?php echo $title ?>"></input></td>
     </tr>
     <tr>
       <td>
-        <p>メモ</p><br>
+        メモ<br>
       <textarea rows="10" cols="50" name="schedule"><?php echo $schedule; ?></textarea>
       </td>
     </tr>
