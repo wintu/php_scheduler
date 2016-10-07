@@ -15,13 +15,14 @@ $query = $db->query("select * from cr_data where user_id = '{$user_id}'");
 $data = array();
 
 while($row = $query->fetch(PDO::FETCH_ASSOC)){
+  $link = "location.href='{$row['footer']}'";
 
   $data[] = array(
     'date'=>$row['date'],
     'badge'=>$row['badge'],
     'title'=>$row['title'],
     'body'=>$row['body'],
-    'footer'=>'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" onclick="location.href='.$row['footer'].'">編集!</button>',
+    'footer'=>'<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> <button type="button" class="btn btn-primary" onclick="'.$link.'">編集!</button>',
     'classname'=>$row['classname']
   );
 }
