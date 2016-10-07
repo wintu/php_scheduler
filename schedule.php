@@ -10,6 +10,8 @@ schedule();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>スケジュール帳</title>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 </head>
 <body>
 <h4>スケジュール登録</h4>
