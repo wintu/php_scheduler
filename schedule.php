@@ -47,14 +47,15 @@ schedule();
             $disp_ymd = "{$y}年{$m}月{$d}日のスケジュール";
 
             // スケジュールデータを取得する
-            $query = $db->query("select * from schedule where date = {$ymd}");
+            $query = $db->query("select * from cr_data where date = {$ymd}");
             if(!empty($query)){
               $res = $query->fetch(PDO::FETCH_ASSOC);
             } else {
               $res = null;
             }
-            if (!empty($res['content'])) {
-                $schedule = $res['content'];
+            if (!empty($res['body'])) {
+                $schedule = $res['body'];
+                $title = $res['title']
             } else {
                 $schedule = "";
             }
@@ -62,7 +63,7 @@ schedule();
 
         if (isset($_POST["action"]) and $_POST["action"] == "更新する") {
             $stext = htmlspecialchars($_POST["schedule"], ENT_QUOTES, "UTF-8");
-            $title= htmlspecialchars($_POST["title"], ENT_QUOTES, "UTF-8")
+            $title = htmlspecialchars($_POST["title"], ENT_QUOTES, "UTF-8");
 
             // スケジュールが入力されたか調べて処理を分岐
             if (!empty($stext)) {
@@ -76,7 +77,7 @@ schedule();
 
             } else {
                 // スケジュールが空の場合はファイルを削除
-                if (!empty($res['content'])) {
+                if (!empty($res['body'])) {
                     $db->query("delete from cr_data where id = {$res['id']}");
                 }
             }
