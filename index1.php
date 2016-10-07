@@ -25,13 +25,13 @@ $(document).ready(function () {
 </head>
 <body>
 <h4>スケジュール帳</h4>
-<div class="row col-xs-10 col-xs-offset-1">
+<div class="row">
   <form action="schedule.php" method="get">
     <input type="submit" value="新しいスケジュールを登録する">
-    <input type="text" id="departure" name="ymd" >ここをクリック</input>
+    <input type="text" id="departure" name="ymd" value="<?php echo date("Y/m/d") ?>" >
   </form>
 </div>
-<div class="row col-xs-10 col-xs-offset-1">
+<div class="row">
   <div id="my-calendar"></div>
 </div>
 <script>$( "#departure" ).dateDropper();</script>
