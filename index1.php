@@ -34,6 +34,8 @@ $(document).ready(function () {
 <div class="row">
   <div id="my-calendar"></div>
 </div>
-<script>$( "#departure" ).dateDropper();</script>
+<script>$( "#departure" ).dateDropper({
+  format:'Y/m/d'
+});</script>
 </body>
 </html>
