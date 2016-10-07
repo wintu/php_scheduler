@@ -75,7 +75,7 @@ schedule();
             $title = htmlspecialchars($_POST["title"], ENT_QUOTES, "UTF-8");
 
             // スケジュールが入力されたか調べて処理を分岐
-            if (!empty($stext)) {
+            if (!empty($stext) || !empty($title)) {
                 // 入力された内容でスケジュールを更新
                 $stext = str_replace("\r", "", $stext);
                 if (empty($res)){
@@ -86,7 +86,7 @@ schedule();
 
             } else {
                 // スケジュールが空の場合はファイルを削除
-                if (!empty($res['body']) && !empty($res['title'])) {
+                if (!empty($res['body']) || !empty($res['title'])) {
                     $db->query("delete from cr_data where id = {$res['id']}");
                 }
             }
