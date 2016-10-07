@@ -91,7 +91,7 @@ schedule();
                 }
             }
             // カレンダー画面の元の年月に移動する
-            header("Location: index.php");
+            //header("Location: index.php");
         }
     }
 ?>
