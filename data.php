@@ -4,10 +4,15 @@ if (!isset($_SESSION["USERID"])) {
   header("Location: logout.php");
   exit;
 }
-
 require_once('config.php');
 $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
-$query = $db->query("select * from cr_data where user_id = '{$_SESSION["USERID"]}'");
+function FindUserId($user_id){
+  $query = $db->query("select * from users where name = '{$user_id}'");
+  $data = $query->fetch(PDO::FETCH_ASSOC);
+  return $data['id'];
+}
+
+$query = $db->query("select * from cr_data where user_id = '{FindUserId($_SESSION["USERID"])}'");
 
 $data = array();
 
