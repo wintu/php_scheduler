@@ -6,12 +6,9 @@ if (!isset($_SESSION["USERID"])) {
 }
 require_once('config.php');
 $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
-function FindUserId($user_id){
-  $query = $db->query("select * from users where name = '{$user_id}'");
-  $data = $query->fetch(PDO::FETCH_ASSOC);
-  return $data['id'];
-}
-$user_id = FindUserId($_SESSION["USERID"]);
+$query = $db->query("select * from users where name = '{$user_id}'");
+$db_data = $query->fetch(PDO::FETCH_ASSOC);
+$user_id = $db_data['id'];
 
 $query = $db->query("select * from cr_data where user_id = '{$user_id}'");
 
