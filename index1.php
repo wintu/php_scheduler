@@ -35,7 +35,7 @@ $(document).ready(function () {
   <div id="my-calendar"></div>
 </div>
 <script>$( "#departure" ).dateDropper({
-  format:'Y-md'
+  format:'Y-m-d'
 });</script>
 </body>
 </html>
