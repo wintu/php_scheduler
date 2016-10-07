@@ -41,7 +41,7 @@ schedule();
         if (isset($_GET["ymd"])) {
             // スケジュールの年月日を取得する
             $ymd = basename($_GET["ymd"]);
-            $ymd = date('ymd', $ymd);
+            $ymd = date('ymd', strtotime($ymd));
             $y = intval(substr($ymd, 0, 4));
             $m = intval(substr($ymd, 4, 2));
             $d = intval(substr($ymd, 6, 2));
