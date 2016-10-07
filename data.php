@@ -11,8 +11,9 @@ function FindUserId($user_id){
   $data = $query->fetch(PDO::FETCH_ASSOC);
   return $data['id'];
 }
+$user_id = FindUserId($_SESSION["USERID"]);
 
-$query = $db->query("select * from cr_data where user_id = '{FindUserId($_SESSION["USERID"])}'");
+$query = $db->query("select * from cr_data where user_id = '{$user_id}'");
 
 $data = array();
 
