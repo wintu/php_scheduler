@@ -28,14 +28,14 @@ $(document).ready(function () {
 <div class="row">
   <form action="schedule.php" method="get">
     <input type="submit" value="新しいスケジュールを登録する">
-    <input type="text" id="departure" name="ymd" value="<?php echo date("Y/m/d") ?>" >
+    <input type="text" id="departure" name="ymd" value="<?php echo date("Y-m-d") ?>" >
   </form>
 </div>
 <div class="row">
   <div id="my-calendar"></div>
 </div>
 <script>$( "#departure" ).dateDropper({
-  format:'Y/m/d'
+  format:'Y-md'
 });</script>
 </body>
 </html>
