@@ -19,7 +19,7 @@ schedule();
       <td><?php echo $disp_ymd; ?></td>
     </tr>
     <tr>
-      <td><p>タイトル</p><br><input type="text" name="title" size="40"></input></td>
+      <td><p>タイトル</p><br><input type="text" name="title" size="40"><?php echo $title ?></input></td>
     </tr>
     <tr>
       <td>
@@ -91,7 +91,7 @@ schedule();
                 }
             }
             // カレンダー画面の元の年月に移動する
-            //header("Location: index.php");
+            header("Location: index.php");
         }
     }
 ?>
