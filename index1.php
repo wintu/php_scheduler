@@ -27,8 +27,8 @@ $(document).ready(function () {
 <h4>スケジュール帳</h4>
 <div class="row col-xs-10 col-xs-offset-1">
   <form action="schedule.php" method="get">
-    <input type="text" id="departure" ><?php echo date("Y/m/d"); ?></input>
     <input type="submit" value="新しいスケジュールを登録する">
+    <input type="text" id="departure" name="ymd" >ここをクリック</input>
   </form>
 </div>
 <div class="row col-xs-10 col-xs-offset-1">
