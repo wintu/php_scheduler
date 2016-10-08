@@ -38,6 +38,7 @@ include('config.php');
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
   </head>
   <body>
+    <div class="row col-xs-6 col-xs-offset-3 well bs-component">
   <form id="loginForm" name="loginForm" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
   <fieldset>
   <legend>ログインフォーム</legend>
@@ -49,5 +50,6 @@ include('config.php');
   <label></label><input type="submit" id="login" name="login" value="ログイン">
   </fieldset>
   </form>
+</div>
   </body>
 </html>
