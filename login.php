@@ -43,6 +43,7 @@ include('config.php');
   <fieldset>
   <legend>ログインフォーム</legend>
   <div><?php echo $errorMessage ?></div>
+  <div class="control-group">
   <label for="userid">ユーザID</label><input type="text" id="userid" name="userid" value="<?php echo $viewUserId ?>">
   <br>
   <label for="password">パスワード</label><input type="password" id="password" name="password" value="">
@@ -50,6 +51,6 @@ include('config.php');
   <label></label><input type="submit" id="login" name="login" value="ログイン">
   </fieldset>
   </form>
-</div>
+</div></div>
   </body>
 </html>
