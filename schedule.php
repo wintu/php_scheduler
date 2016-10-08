@@ -15,6 +15,7 @@ schedule();
 </head>
 <body>
 <h4>スケジュール登録</h4>
+<div class="row col-xs-6 col-xs-offset-3 well bs-component">
 <form method="POST" action="">
   <table>
     <tr>
@@ -37,6 +38,7 @@ schedule();
     </tr>
   </table>
 </form>
+</div>
 </body>
 </html>
 <?php
