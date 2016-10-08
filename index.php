@@ -44,5 +44,6 @@ $(document).ready(function () {
 <script>$( "#departure" ).dateDropper({
   format:'Y-m-d'
 });</script>
+<input type="button" onclick="location.href='logout.htm'"value="ログアウトする">
 </body>
 </html>
