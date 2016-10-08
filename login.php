@@ -41,7 +41,7 @@ include('config.php');
     <div class="row col-xs-6 col-xs-offset-3 well bs-component">
   <form id="loginForm" name="loginForm" action="<?php print($_SERVER['PHP_SELF']) ?>" method="POST">
   <fieldset>
-  <legend>ログインフォーム</legend>
+  <legend>スケジュール帳　ログイン</legend>
   <div><?php echo $errorMessage ?></div>
   <div class="control-group">
   <label for="userid">ユーザID</label><input type="text" id="userid" name="userid" value="<?php echo $viewUserId ?>">
