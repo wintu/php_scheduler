@@ -80,7 +80,7 @@
 
     function contents( $ymd ) {
         $s = "";
-        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
+        $db = new PDO("mysql:host=${DB_HOST};dbname=${DB_HOST};charset=utf8", DB_USER, DB_PASS);
         $query = $db->query("select * from schedule where date = {$ymd}");
 
         if(!empty($query)){

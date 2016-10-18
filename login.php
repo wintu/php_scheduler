@@ -2,7 +2,7 @@
 include('config.php');
   session_start();
   function FindUser($user_id){
-    $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
+    $db = new PDO("mysql:host=${DB_HOST};dbname=${DB_HOST};charset=utf8", DB_USER, DB_PASS);
     $query = $db->query("select * from users where name = '{$user_id}'");
     $row = $query->fetch(PDO::FETCH_ASSOC);
     if(!empty($row)){

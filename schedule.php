@@ -45,7 +45,7 @@ schedule();
     function schedule() {
       include('config.php');
         global $disp_ymd, $schedule, $title;
-        $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
+        $db = new PDO("mysql:host=${DB_HOST};dbname=${DB_HOST};charset=utf8", DB_USER, DB_PASS);
         $query = $db->query("select * from users where name = '{$_SESSION["USERID"]}'");
         $db_data = $query->fetch(PDO::FETCH_ASSOC);
         $user_id = $db_data['id'];

@@ -1,7 +1,7 @@
 <?php
 require_once('config.php');
   if (isset($_POST["login"])) {
-    $db = new PDO('mysql:host=localhost;dbname=php;charset=utf8', DB_USER, DB_PASS);
+    $db = new PDO("mysql:host=${DB_HOST};dbname=${DB_HOST};charset=utf8", DB_USER, DB_PASS);
     $pass = password_hash($_POST["password"], PASSWORD_DEFAULT);
     $db->query("insert into users(name, pass) values('{$_POST["userid"]}', '{$pass}')");
     header("Location: login.php");
